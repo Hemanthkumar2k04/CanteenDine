@@ -20,7 +20,7 @@ function Home() {
     { id: 11, name: "Fries", description: "Crispy golden fries", imageUrl: "/images/fries.jpg", orders: 90 },
     { id: 12, name: "Hot Dog", description: "Classic hot dog with mustard", imageUrl: "/images/hotdog.jpg", orders: 85 },
     { id: 13, name: "Nachos", description: "Cheesy nachos with jalapenos", imageUrl: "/images/nachos.jpg", orders: 75 },
-    { id: 14, name: "Pancakes", description: "Fluffy pancakes with syrup", imageUrl: "/images/pancakes.jpg", orders: 165 },
+    { id: 14, name: "Pancakes", description: "Fluffy pancakes with syrup", imageUrl: "pancake.jpg", orders: 165 },
     { id: 15, name: "Brownie", description: "Chocolate brownie with nuts", imageUrl: "/images/brownie.jpg", orders: 155 },
   ];
 

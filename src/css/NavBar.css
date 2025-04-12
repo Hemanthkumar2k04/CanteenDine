@@ -1,47 +1,115 @@
+/* NavBar.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@500;600&display=swap');
+
 .navbar {
-  background-color: #000000;
-  padding: 1rem 2rem;
+  background-color: #1a1a1a;
+  padding: 1.2rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
+.navbar-brand .logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
 .navbar-links {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .nav-link {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
   border-radius: 4px;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  color: #e0e0e0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  background-color: rgba(255, 107, 107, 0.15);
 }
 
+.nav-link.active {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+.cart-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.cart-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.cart-counter {
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem;
+    padding: 1rem 5%;
   }
-
-  .navbar-brand {
-    font-size: 1.2rem;
+  
+  .navbar-brand .logo-text {
+    font-size: 1.6rem;
   }
-
+  
   .navbar-links {
     gap: 1rem;
   }
-
+  
   .nav-link {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem 5%;
+  }
+  
+  .navbar-brand .logo-text {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-links {
+    width: 100%;
+    justify-content: space-around;
   }
 }

@@ -1,80 +1,110 @@
 .home {
-  padding: 2rem 0;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
 }
 
 .search-form {
   max-width: 600px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 30px;
   display: flex;
-  gap: 1rem;
+  gap: 10px;
   padding: 0 1rem;
   box-sizing: border-box;
 }
 
 .search-input {
   flex: 1;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #333;
-  color: white;
-  font-size: 1rem;
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: #333;
 }
 
 .search-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #666;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
 }
 
 .search-button {
-  padding: 0.75rem 1.5rem;
-  background-color: #e50914;
+  padding: 12px 25px;
+  background: #ff6b6b;
   color: white;
-  border-radius: 4px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
   font-weight: 500;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
   white-space: nowrap;
 }
 
 .search-button:hover {
-  background-color: #f40612;
-}
-
-@media (max-width: 639px) {
-  .home {
-    padding: 1rem 0;
-  }
-
-  .search-form {
-    margin-bottom: 1rem;
-  }
+  background: #ff5252;
+  transform: translateY(-1px);
 }
 
 .dishes-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 dishes per row */
-  gap: 1.5rem; /* Add spacing between the cards */
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 20px;
   width: 100%;
   box-sizing: border-box;
 }
 
-@media (max-width: 1024px) {
+/* Responsive adjustments */
+@media (max-width: 1200px) {
   .dishes-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 dishes per row for medium screens */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .home {
+    padding: 15px;
+  }
+  
+  .dishes-grid {
+    gap: 20px;
   }
 }
 
 @media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .search-input,
+  .search-button {
+    width: 100%;
+  }
+  
   .dishes-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 dishes per row for small screens */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
+  .home {
+    padding: 10px;
+  }
+  
   .dishes-grid {
-    grid-template-columns: 1fr; /* 1 dish per row for very small screens */
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .search-button {
+    padding: 12px;
   }
 }

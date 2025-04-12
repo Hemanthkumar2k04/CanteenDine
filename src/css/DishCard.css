@@ -1,175 +1,148 @@
 .dish-card {
   position: relative;
-  border-radius: 8px;
+  width: 280px;
+  background: #2d2d2d;
+  border-radius: 12px;
   overflow: hidden;
-  background-color: #1a1a1a;
-  transition: transform 0.2s;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visibility */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 15px;
+  border: 1px solid #404040;
 }
 
 .dish-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dish-frame {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .dish-poster {
   position: relative;
-  aspect-ratio: 4/3; /* Adjust aspect ratio for better image visibility */
   width: 100%;
+  height: 100%;
 }
 
 .dish-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-bottom: 2px solid #333; /* Add a subtle border for separation */
+  transition: transform 0.5s ease;
+}
+
+.dish-card:hover .dish-poster img {
+  transform: scale(1.05);
 }
 
 .dish-overlay {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.8)
-  );
-  opacity: 0;
-  transition: opacity 0.2s;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 15px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .dish-card:hover .dish-overlay {
   opacity: 1;
 }
 
-.cart-btn {
-  position: absolute;
-  right: 1rem;
-  color: white;
-  font-size: 1.5rem;
-  padding: 1.5rem;
-  background-color: rgba(106, 239, 237, 0.821);
+.quantity-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-btn, .confirm-btn, .clear-btn, 
+.decrement-btn, .increment-btn {
+  border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+}
+
+.cart-btn {
+  background: #ff6b6b;
+  color: white;
+  font-size: 18px;
 }
 
 .cart-btn:hover {
-  background-color: rgba(113, 211, 181, 0.8);
+  background: #ff5252;
+  transform: scale(1.1);
 }
 
-.increment-btn, .decrement-btn{
-  background-color: rgba(106, 239, 237, 0.821);
-  color: white;
-  padding: 0.5rem;
-  margin: 5px 10px;
-  font-size: larger;
-  border-radius: 60px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.rating-select {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 0.5rem;
-}
-
-.dish-info {
-  padding: 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-align: center; /* Center-align text for better aesthetics */
-}
-
-.dish-info h3 {
-  font-size: 1.1rem; /* Slightly larger font for better readability */
-  margin: 0;
-  color: #fff; /* Ensure text is visible on dark background */
-}
-
-.dish-info p {
-  color: #999;
-  font-size: 0.9rem;
-}
-
-.user-rating {
-  color: #ffd700;
-  font-size: 0.9rem;
-  margin-top: auto;
-}
-
-.quantity-container {
-  display: flex; /* Align items in a single row */
-  align-items: center; /* Vertically center all items */
-  justify-content: center; /* Center the controls horizontally */
-  gap: 0.5rem; /* Add spacing between buttons and quantity */
-  margin-top: 1rem; /* Add spacing above the container */
-}
-
-.cart-btn,
-.decrement-btn,
-.increment-btn,
 .confirm-btn {
-  width: 40px; /* Ensure all buttons have the same width */
-  height: 40px; /* Ensure all buttons have the same height */
-  font-size: 1.5rem; /* Adjust font size for consistency */
-  background-color: rgba(106, 239, 237, 0.821); /* Button background color */
-  color: white; /* Button text color */
-  border: none; /* Remove default border */
-  border-radius: 50%; /* Make buttons circular */
-  display: flex;
-  align-items: center; /* Center content inside the button */
-  justify-content: center; /* Center content inside the button */
-  cursor: pointer;
-  transition: background-color 0.2s;
+  background: #4CAF50;
+  color: white;
 }
 
-.cart-btn:hover,
-.decrement-btn:hover,
-.increment-btn:hover,
 .confirm-btn:hover {
-  background-color: rgba(113, 211, 181, 0.8); /* Change background color on hover */
+  background: #45a049;
+  transform: scale(1.1);
+}
+
+.clear-btn {
+  background: #ff4444;
+  color: white;
+}
+
+.clear-btn:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+.decrement-btn, .increment-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+.decrement-btn:hover, .increment-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
 }
 
 .quantity {
-  font-size: 1.2rem; /* Slightly larger font size for better readability */
-  font-weight: bold; /* Make the quantity text bold */
-  color: #333; /* Quantity text color */
-  min-width: 2rem; /* Ensure consistent width for alignment */
-  text-align: center; /* Center-align the quantity text */
+  min-width: 20px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
 }
 
-@media (max-width: 768px) {
-  .dish-card {
-    font-size: 0.9rem;
-  }
+.dish-info {
+  padding: 15px;
+  background: #2d2d2d;
+}
 
-  .dish-info {
-    padding: 0.75rem;
-  }
+.dish-info h3 {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-size: 18px;
+}
 
-  .cart-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 1.2rem;
-  }
+.dish-info p {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: 14px;
+  line-height: 1.4;
 }
