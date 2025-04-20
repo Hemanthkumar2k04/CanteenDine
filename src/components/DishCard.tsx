@@ -83,7 +83,7 @@ function DishCard({ Dish }: { Dish: Dish }) {
             <div className="dish-info">
                 <div className="dish-header">
                     <h3 className="dish-name">{Dish.name}</h3>
-                    <p className="dish-price">${Dish.price.toFixed(2)}</p>
+                    <p className="dish-price">₹ {Dish.price.toFixed(2)}</p>
                 </div>
                 <p>{Dish.description}</p>
             </div>

@@ -111,7 +111,14 @@ function CartPage() {
     // Render an empty cart message if the cart is empty
     if (cart.length === 0) {
         return (
-            <div className="cart-empty">
+            <div className="cart-empty" style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '50vh',
+                color: 'white',
+                textAlign: 'center'}}>
                 <h2>Your cart is empty</h2>
                 <p>Add some dishes to your cart to see them here!</p>
             </div>
