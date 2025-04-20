@@ -36,6 +36,15 @@
   gap: 1rem;
 }
 
+/* Cart Item Image */
+.cart-item-image {
+    width: 100px; /* Set a fixed width */
+    height: 100px; /* Set a fixed height */
+    object-fit: cover; /* Ensure the image fits within the dimensions without distortion */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    margin-right: 10px; /* Optional: Add spacing between the image and other content */
+}
+
 /* Cart Item Details */
 .cart-item-details {
   flex: 1;
