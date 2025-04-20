@@ -164,7 +164,7 @@ function CartPage() {
                                 {item.description}
                             </p>
                             <p className="cart-item-price">
-                                ${(item.price * item.quantity).toFixed(2)}
+                            ₹{(item.price * item.quantity).toFixed(2)}
                             </p>
                         </div>
 
@@ -183,7 +183,8 @@ function CartPage() {
             <div className="cart-footer">
                 <div className="cart-total">
                     <span>Total:</span>
-                    <span>${calculateTotal()}</span>
+                    <span>
+                    ₹{calculateTotal()}</span>
                 </div>
                 <button
                     className="checkout-btn"
@@ -198,7 +199,7 @@ function CartPage() {
                 <div className="modal">
                     <div className="modal-content">
                         <h3>Order Summary</h3>
-                        <p>Total: ${calculateTotal()}</p>
+                        <p>Total: ₹{calculateTotal()}</p>
                         <div className="input-group">
                             <label>Customer Name:</label>
                             <input
