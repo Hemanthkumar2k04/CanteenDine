@@ -1,54 +1,103 @@
-# React + TypeScript + Vite
+# 🍔 CanteenDine - Fast Food Billing System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### This is a full-stack application designed to streamline fast food ordering and billing. The system allows users to browse dishes, add them to a cart, proceed with checkout, and log transactions. The project uses Flask for the backend, React for the frontend, and MongoDB for the database.
 
-Currently, two official plugins are available:
+## 📋 Features
+🍽️ Browse Dishes – View available dishes with images, descriptions, and prices
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛒 Cart Management – Add or remove dishes from the cart with ease
 
-## Expanding the ESLint configuration
+📇 Place Orders – Provide basic user info like 👤 name and 📞 phone number at checkout
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+💳 Make Payment – Complete payment and store transaction details securely
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+📜 View History – Access transaction history for administrative purposes
+
+## 🚀 Getting Started
+1. **📦 Clone the Repository**
+```
+git clone https://github.com/your-username/fast-food-billing-system.git
+cd fast-food-billing-system
+```
+2. **⚙️ Backend Setup (Flask)**
+Make sure Python is installed.
+
+Run the Flask server:
+```
+python server.py
+```
+or
+```
+py server.py
+```
+This will start the backend on the default port (e.g., _http://localhost:5000_).
+
+3. **🎨 Frontend Setup (React)**
+Navigate to the frontend directory:
+```
+cd frontend
+```
+Install the dependencies:
+```
+npm install
+```
+Run the frontend:
+```
+npm run dev
+```
+React app will run on _http://localhost:5173_ (or your default Vite port).
+
+4. **🗃️ MongoDB Setup**
+Create a MongoDB database named:
+#### canteen_dine
+
+Create the following collections:
+Dishes :
+- Name (string)
+- Description (string)
+- Price (number)
+- Image (string / image URL or encoded image)
+
+Users :
+- name (string)
+- phone (string)
+- Created at - timestamp
+
+Orders :
+- Cart details 
+- User details
+- Transaction id
+- Total amount
+
+Transactions :
+- User ID
+- Payment details
+- Payment method
+- Payment status 
+
+<ins>Structure for dishes collection:</ins>
+```
+{
+  "name": "Dish Name",
+  "description": "A short description of the dish",
+  "price": 100,
+  "image": "image_url_or_filename"
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Make sure your MongoDB is running and the connection string in your Flask app (server.py) points to your MongoDB instance.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ***🔥 Note:***
+- Make sure MongoDB is running before starting the backend.
+- Images of dishes can be stored either as URLs or in base64 format depending on how you handle them on the frontend.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🤝 Contributing
+
+This is an open-source project, and we welcome contributions from everyone! 🙌  
+Feel free to **fork** the repository, create a **branch**, and submit a **pull request**.
+
+Whether it's fixing bugs 🐞, improving the UI 🎨, or adding new features 🚀 — all contributions are appreciated!
+
+If you have suggestions or spot any issues, don’t hesitate to open an issue 📬.
+
+Let’s build something awesome together! 💡✨
