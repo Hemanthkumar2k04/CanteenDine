@@ -27,26 +27,36 @@ def get_menu():
 @app.route('/checkout', methods=['POST'])
 def place_order():
     data = request.json
+
+    # Validate input
     user_id = data.get('user_id')
     dish_orders = data.get('dishes')
+    phone = data.get('phone')
+    payment_method = data.get('paymentMethod', 'cash')
 
-    if not dish_orders:
-        return jsonify({"error": "No dishes provided"}), 400
+    if not user_id or not phone or not dish_orders:
+        return jsonify({"error": "user_id, phone, and dishes are required"}), 400
 
     total_amount = 0
     order_dishes = []
 
+    # Process each dish in the order
     for item in dish_orders:
-        dish = dishes_col.find_one({"id": item["dish_id"]})  # using custom dish id
+        dish_id = item.get("dish_id")
+        quantity = item.get("quantity")
+
+        if not dish_id or not quantity:
+            return jsonify({"error": "Each dish must have a dish_id and quantity"}), 400
+
+        dish = dishes_col.find_one({"id": dish_id})  # Find dish by custom dish ID
 
         if not dish:
-            return jsonify({"error": f'Dish not found: {item["dish_id"]}'}), 404
+            return jsonify({"error": f"Dish not found: {dish_id}"}), 404
 
-        quantity = item["quantity"]
         amount = quantity * dish["price"]
         total_amount += amount
 
-        # Track what's being ordered
+        # Track ordered dishes
         order_dishes.append({
             "dishId": dish["id"],
             "name": dish["name"],
@@ -55,16 +65,16 @@ def place_order():
         })
 
         # Increment the 'orders' count for this dish
-        dishes_col.update_one({"id": item["dish_id"]}, {"$inc": {"orders": quantity}})
+        dishes_col.update_one({"id": dish_id}, {"$inc": {"orders": quantity}})
 
     # Record transaction
     transaction = {
         "userId": user_id,
         "amount": total_amount,
-        "paymentMethod": data.get("paymentMethod", "cash"),
+        "paymentMethod": payment_method,
         "status": "completed",
         "paymentDate": datetime.now(),
-        "phone": data.get("phone")
+        "phone": phone
     }
     transaction_id = transactions_col.insert_one(transaction).inserted_id
 
@@ -77,12 +87,16 @@ def place_order():
         "status": "pending",
         "createdAt": datetime.now()
     }
-    orders_col.insert_one(order)
+    order_id = orders_col.insert_one(order).inserted_id
 
+    # Return response
     return jsonify({
         "message": "Order placed successfully!",
+        "orderId": str(order_id),
         "transactionId": str(transaction_id),
-        "totalAmount": total_amount
+        "totalAmount": total_amount,
+        "userId": user_id,
+        "dishes": order_dishes
     })
 
 # -------------------- REGISTER USER --------------------
