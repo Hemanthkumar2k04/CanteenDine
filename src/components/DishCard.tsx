@@ -1,7 +1,7 @@
 import "../css/DishCard.css";
 import { useState, useEffect } from "react";
 import { useCartContext } from "../contexts/CartContext";
-
+import { toast } from 'react-toastify';
 type Dish = {
     id: number;
     name: string;
@@ -34,8 +34,8 @@ function DishCard({ Dish }: { Dish: Dish }) {
 
     function confirmAddToCart() {
         addToCart({ ...Dish, quantity }); // Reflect changes in the cart and localStorage
-        alert(`Added ${Dish.name} to cart!`);
         setInCart(false);
+        toast.success(`${Dish.name} added to cart!`);
     }
 
     function incrementQuantity() {

@@ -7,3 +7,7 @@
   flex-direction: column;
   color:#242424;
 }
+.Toastify__toast--success {
+  background-color: #00b894; /* Custom green */
+  color: white;
+}
